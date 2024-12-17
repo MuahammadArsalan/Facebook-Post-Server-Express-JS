@@ -6,11 +6,15 @@ const createUser = async (req,res) => {
 
 const {name , email} = req.body;
 
+if (!name) return res.json({message:"Name is required"})
+if (!email) return res.json({message:"email is required"})
+
 const user =await User.create({
     name,
     email,
    
 })
+
 res.json({
     message:"User created successfully",
     data:user
